@@ -19,6 +19,12 @@ const reactionSchema = new mongoose.Schema ({
         default: Date.now,
         get: (createdAtVal) => formatDate(createdAtVal)
     }
+},
+{
+    toJSON: {
+        getters: true
+    },
+    id: false
 });
 
 const thoughtSchema = new mongoose.Schema ({
