@@ -11,7 +11,7 @@ module.exports = {
             });
             res.json(userData);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json({message: 'trouble finding all users'});
         }
     },
     // get one user by id
