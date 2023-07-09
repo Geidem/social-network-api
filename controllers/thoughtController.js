@@ -77,12 +77,14 @@ const thoughtController = {
             })
             .then(dbUserData => {
                 if (!dbUserData) {
-                    res.status(404).json({ message: 'Thought deleted!' });
-                    return;
+                    return res.json({ message: 'Thought deleted, user not found' });
                 }
-                res.json(dbUserData);
+                return res.json(dbUserData);
             })
-            .catch(err => res.json(err));
+            .catch(err => {
+                console.error(err);
+                return res.status(500).json({ message: 'Something went wrong!' });
+            });
     },
 
     // add reaction
@@ -103,10 +105,10 @@ const thoughtController = {
 
     // remove reaction
     removeReaction({ params }, res) {
-        console.log(params.thoughtId, params.reactionId);
+        console.log({message: "removing reaction"});
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
-            { $pull: { reactions: { reactionId: params.reactionId } } },
+            { $pull: { reactions: { _id: params.reactionId } } },
             { runValidators: true, new: true }
         )
             .then(dbUserData => res.json(dbUserData))
