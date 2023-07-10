@@ -17,6 +17,7 @@ Users will want to clone the repository containing the code for the web app to t
 
 ![GET request of all users](assets/images/getallusers.png)
 ![GET request of all thoughts](assets/images/getallthoughts.png)
+![Link to video walkthrough](https://drive.google.com/file/d/1017YOyU1VGyNLiVu1_QIEYBzRC5xPO3G/view)
     
 ## License
 
